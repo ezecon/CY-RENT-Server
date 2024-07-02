@@ -29,6 +29,11 @@ const rentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+        status:{
+        type: String,
+        default: 'Pending',
+
+    },
     date: {
         type: Date,
         default: Date.now
