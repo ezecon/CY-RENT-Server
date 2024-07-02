@@ -67,5 +67,16 @@ router.delete('/:id', async (req, res) => {
     }
   });
 
+  router.put('/:id', async (req, res) => {
+    try {
+        const updatedUser = await RentHistory.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        if (!updatedUser) return res.status(404).send({ message: 'User not found' });
+        res.send(updatedUser);
+      } catch (error) {
+        res.status(500).send({ message: 'Error updating user', error });
+      }
+});
+
+
 
 module.exports = router;
