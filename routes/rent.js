@@ -55,6 +55,17 @@ router.get('/check/:RenterID', async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 });
+
  
+router.delete('/:id', async (req, res) => {
+    try {
+      await RentHistory.findByIdAndDelete(req.params.id);
+      res.json({ message: 'Item deleted' });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: 'Server Error' });
+    }
+  });
+
 
 module.exports = router;
